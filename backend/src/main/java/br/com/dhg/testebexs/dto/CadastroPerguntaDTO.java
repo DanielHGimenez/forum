@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class CadastroPerguntaDTO {
 
-    @NotEmpty(message = "Valor da pergunta não pode ser nulo ou vazio")
-    @Size(max = 250, message = "Pergunta excedeu 250 caracteres")
+    @NotEmpty(message = "A pergunta não pode ser nula ou vazia")
+    @Size(max = 250, message = "A pergunta não pode exceder 250 caracteres de comprimento")
     private String pergunta;
 
 }
