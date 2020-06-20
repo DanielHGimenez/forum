@@ -38,4 +38,8 @@ public class Resposta {
     @JoinColumn(name = "fk_pergunta_id")
     private Pergunta pergunta;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario_id")
+    private Usuario usuario;
+
 }

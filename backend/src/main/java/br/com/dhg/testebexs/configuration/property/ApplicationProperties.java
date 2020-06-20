@@ -12,4 +12,7 @@ public class ApplicationProperties {
     @Value("${pergunta.quantidade.pagina}")
     private Integer quantidadePerguntasPagina;
 
+    @Value("${resposta.quantidade.pagina}")
+    private Integer quantidadeRespostasPagina;
+
 }
