@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
+import static br.com.dhg.testebexs.DadosFicticios.montarAutenticacaoFicticia;
+import static br.com.dhg.testebexs.DadosFicticios.montarCadastroPerguntaFicticia;
+
 @SpringBootTest
 public class PerguntasControllerTests {
 
@@ -15,11 +18,8 @@ public class PerguntasControllerTests {
     @Test
     void publicarPerguntaComErroPerguntaVaziaTest() {
 
-        String pergunta = " ";
-        Integer idUsuario = 1;
-
         Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(idUsuario, pergunta);
+            controller.publicarPergunta(montarAutenticacaoFicticia(), montarCadastroPerguntaFicticia(" "));
         });
 
     }
@@ -27,35 +27,8 @@ public class PerguntasControllerTests {
     @Test
     void publicarPerguntaComErroPerguntaNulaTest() {
 
-        String pergunta = null;
-        Integer idUsuario = 1;
-
         Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(idUsuario, pergunta);
-        });
-
-    }
-
-    @Test
-    void publicarPerguntaComErroIdUsuarioNuloTest() {
-
-        String pergunta = "pergunta ficticia";
-        Integer idUsuario = null;
-
-        Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(idUsuario, pergunta);
-        });
-
-    }
-
-    @Test
-    void publicarPerguntaComErroIdUsuarioNegativoTest() {
-
-        String pergunta = "pergunta ficticia";
-        Integer idUsuario = -1;
-
-        Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(idUsuario, pergunta);
+            controller.publicarPergunta(montarAutenticacaoFicticia(), montarCadastroPerguntaFicticia(null));
         });
 
     }
