@@ -10,6 +10,7 @@ import static br.com.dhg.testebexs.DadosFicticios.montarAutenticacaoFicticia;
 import static br.com.dhg.testebexs.DadosFicticios.montarCadastroPerguntaFicticia;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class PerguntasControllerTests {
 
     @Autowired
