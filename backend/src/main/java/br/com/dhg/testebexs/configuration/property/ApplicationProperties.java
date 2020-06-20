@@ -7,8 +7,8 @@ import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
 
 @PropertySources({
-        @PropertySource("application.properties"),
-        @PropertySource("application-${spring.profiles.active}.properties")
+        @PropertySource("classpath:application.properties"),
+        @PropertySource("classpath:application-${spring.profiles.active}.properties")
 })
 @Component
 @Getter
