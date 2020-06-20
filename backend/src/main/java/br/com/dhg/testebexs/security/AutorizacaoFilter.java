@@ -41,6 +41,7 @@ public class AutorizacaoFilter extends OncePerRequestFilter {
 
             if (authentication != null) {
                 logger.info("Usuario logado");
+                request.setAttribute("usuario", authentication.getPrincipal());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
 

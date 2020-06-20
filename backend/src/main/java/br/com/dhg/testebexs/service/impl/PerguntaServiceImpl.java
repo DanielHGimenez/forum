@@ -9,6 +9,7 @@ import br.com.dhg.testebexs.repository.PerguntaRepository;
 import br.com.dhg.testebexs.repository.RespostaRepository;
 import br.com.dhg.testebexs.repository.UsuarioRepository;
 import br.com.dhg.testebexs.service.PerguntaService;
+import br.com.dhg.testebexs.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,16 +53,12 @@ public class PerguntaServiceImpl implements PerguntaService {
     }
 
     @Override
-    public ExibicaoPerguntasPaginadoDTO obterExibicoesPaginado(Integer numeroPagina) {
+    public ExibicaoPerguntasPaginadoDTO buscarPaginado(Integer numeroPagina) {
 
         Page<Pergunta> paginaPerguntas = perguntaRepository.findAll(
                 PageRequest.of(
-                        /*
-                         * Numero da pagina começa em 0 no Spring Data enquanto na API começa em 1,
-                         * e por isso subtraimos 1 para igualar ao valor correto.
-                         */
-                        numeroPagina - 1,
-                        applicationProperties.getQuantidadePerguntaPagina()
+                        ServiceUtil.corrigirNumeroPagina(numeroPagina),
+                        applicationProperties.getQuantidadePerguntasPagina()
                 )
         );
 

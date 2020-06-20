@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class ApplicationProperties {
 
     @Value("${pergunta.quantidade.pagina}")
-    private Integer quantidadePerguntaPagina;
+    private Integer quantidadePerguntasPagina;
 
 }

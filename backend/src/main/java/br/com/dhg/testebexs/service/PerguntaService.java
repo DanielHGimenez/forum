@@ -6,6 +6,6 @@ public interface PerguntaService {
 
     Long publicar(String nomeUsuario, String pergunta);
 
-    ExibicaoPerguntasPaginadoDTO obterExibicoesPaginado(Integer numeroPagina);
+    ExibicaoPerguntasPaginadoDTO buscarPaginado(Integer numeroPagina);
 
 }
