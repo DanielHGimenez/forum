@@ -42,7 +42,6 @@ public class AutorizacaoFilter extends OncePerRequestFilter {
             if (authentication != null) {
                 logger.info("Usuario logado");
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-                request.setAttribute("usuario", authentication.getPrincipal());
             }
 
         } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException

@@ -6,6 +6,7 @@ import br.com.dhg.testebexs.security.AutorizacaoFilter;
 import br.com.dhg.testebexs.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,8 +33,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and()
             .csrf().disable()
             .authorizeRequests()
-            .antMatchers("/public/**").permitAll()
-            .anyRequest().authenticated()
+            .antMatchers(HttpMethod.POST, "/perguntas").authenticated()
+            .antMatchers(HttpMethod.POST, "/perguntas/respostas").authenticated()
+            .anyRequest().permitAll()
             .and()
             .addFilterBefore(new AutenticacaoFilter(authenticationManager(), properties),
                     UsernamePasswordAuthenticationFilter.class)
