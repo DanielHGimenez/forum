@@ -6,11 +6,15 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@Builder
-public class ExibicaoPerguntasPaginadoDTO {
+public class ExibicaoPerguntasPaginadoDTO extends PaginadoDTO {
+
+    @Builder
+    public ExibicaoPerguntasPaginadoDTO(List<PerguntaDTO> perguntas, Integer paginaAtual, Integer totalPaginas) {
+        this.perguntas = perguntas;
+        this.paginaAtual = paginaAtual;
+        this.totalPaginas = totalPaginas;
+    }
 
     private List<PerguntaDTO> perguntas;
-    private Integer paginaAtual;
-    private Integer totalPaginas;
 
 }
