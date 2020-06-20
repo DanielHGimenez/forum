@@ -9,12 +9,13 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,16 +26,19 @@ import java.time.LocalDateTime;
 public class Pergunta {
 
     @Id
-    @GeneratedValue
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String text;
+    private String texto;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime creationDate;
+    private LocalDateTime dataCriacao;
 
     @ManyToOne
     @JoinColumn(name = "fk_usuario_id")
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "pergunta")
+    private List<Resposta> respostas;
 
 }
