@@ -20,7 +20,7 @@ public class PerguntasControllerTests {
     void publicarPerguntaComErroPerguntaVaziaTest() {
 
         Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(montarAutenticacaoFicticia(), montarCadastroPerguntaFicticia(" "));
+            controller.publicarPergunta(montarAutenticacaoFicticia("usuario teste"), montarCadastroPerguntaFicticia(" "));
         });
 
     }
@@ -29,7 +29,7 @@ public class PerguntasControllerTests {
     void publicarPerguntaComErroPerguntaNulaTest() {
 
         Assertions.assertThrows(MethodArgumentNotValidException.class, () -> {
-            controller.publicarPergunta(montarAutenticacaoFicticia(), montarCadastroPerguntaFicticia(null));
+            controller.publicarPergunta(montarAutenticacaoFicticia("usuario teste"), montarCadastroPerguntaFicticia(null));
         });
 
     }

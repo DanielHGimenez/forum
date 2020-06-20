@@ -8,8 +8,8 @@ import java.util.Collections;
 
 public class DadosFicticios {
 
-    public static Authentication montarAutenticacaoFicticia() {
-        return new UsernamePasswordAuthenticationToken("usuario teste", Collections.emptyList());
+    public static Authentication montarAutenticacaoFicticia(String usuario) {
+        return new UsernamePasswordAuthenticationToken(usuario, Collections.emptyList());
     }
 
     public static CadastroPerguntaDTO montarCadastroPerguntaFicticia(String pergunta) {
