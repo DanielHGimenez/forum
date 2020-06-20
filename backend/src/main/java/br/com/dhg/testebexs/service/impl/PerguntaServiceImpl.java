@@ -35,7 +35,7 @@ public class PerguntaServiceImpl implements PerguntaService {
     private ApplicationProperties applicationProperties;
 
     @Override
-    public void publicar(String nomeUsuario, String pergunta) {
+    public Long publicar(String nomeUsuario, String pergunta) {
 
         Usuario usuario = usuarioRepository.findByNome(nomeUsuario).get();
 
@@ -46,6 +46,8 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .build();
 
         perguntaRepository.save(registroPergunta);
+
+        return registroPergunta.getId();
 
     }
 

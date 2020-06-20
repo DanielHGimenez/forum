@@ -2,6 +2,7 @@ package br.com.dhg.testebexs.controller;
 
 import br.com.dhg.testebexs.dto.CadastroPerguntaDTO;
 import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
+import br.com.dhg.testebexs.dto.Wrapper;
 import br.com.dhg.testebexs.service.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @RestController
 @RequestMapping("/perguntas")
@@ -26,9 +26,10 @@ public class PerguntasController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void publicarPergunta(Authentication authentication, @Valid @RequestBody CadastroPerguntaDTO perguntaDTO) {
+    public Wrapper<Long> publicarPergunta(Authentication authentication, @Valid @RequestBody CadastroPerguntaDTO perguntaDTO) {
 
-        perguntaService.publicar((String) authentication.getPrincipal(), perguntaDTO.getPergunta());
+        Long idNovaPergunta = perguntaService.publicar((String) authentication.getPrincipal(), perguntaDTO.getPergunta());
+        return new Wrapper<Long>("id", idNovaPergunta);
 
     }
 
