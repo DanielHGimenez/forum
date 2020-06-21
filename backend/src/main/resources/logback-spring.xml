@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+
+    <springProperty scope="context" name="appVersion" source="spring.application.version"/>
+    <springProperty scope="context" name="activeProfile" source="spring.profiles.active"/>
+    <springProperty scope="context" name="logDir" source="spring.application.log.dir"/>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE-INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/info.log</file>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>
+                ${logDir}/info-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE-DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/debug.log</file>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>
+                ${logDir}/debug-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE-WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/warn.log</file>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>
+                ${logDir}/warn-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/error.log</file>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>
+                ${logDir}/error-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+    </appender>
+
+    <appender name="FILE-STACKTRACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/stacktrace.log</file>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%highlight(%level)] [%cyan(%d{HH:mm:ss.SSS})] [%blue(v${appVersion}) - %yellow(${activeProfile})] [%t]  %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>
+                ${logDir}/stacktrace-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ASYNC-Console" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Console" />
+    </appender>
+    <appender name="ASYNC-FILE-INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-INFO" />
+    </appender>
+    <appender name="ASYNC-FILE-DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-DEBUG" />
+    </appender>
+    <appender name="ASYNC-FILE-WARN" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-WARN" />
+    </appender>
+    <appender name="ASYNC-FILE-ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-ERROR" />
+    </appender>
+    <appender name="ASYNC-FILE-STACKTRACE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE-STACKTRACE" />
+    </appender>
+
+    <springProfile name="dev">
+        <logger name="br.com.dhg.testebexs" level="TRACE">
+            <appender-ref ref="ASYNC-FILE-DEBUG" />
+            <appender-ref ref="ASYNC-FILE-STACKTRACE" />
+            <appender-ref ref="ASYNC-Console" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="ASYNC-FILE-INFO" />
+            <appender-ref ref="ASYNC-FILE-WARN" />
+            <appender-ref ref="ASYNC-FILE-ERROR" />
+            <appender-ref ref="ASYNC-Console" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="br.com.dhg.testebexs" level="TRACE">
+            <appender-ref ref="ASYNC-FILE-DEBUG" />
+            <appender-ref ref="ASYNC-FILE-STACKTRACE" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="ASYNC-FILE-INFO" />
+            <appender-ref ref="ASYNC-FILE-WARN" />
+            <appender-ref ref="ASYNC-FILE-ERROR" />
+        </root>
+    </springProfile>
+
+</configuration>
