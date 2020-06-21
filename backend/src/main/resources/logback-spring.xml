@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="10 seconds">
+<configuration scan="true" scanPeriod="20 seconds">
 
     <springProperty scope="context" name="appVersion" source="spring.application.version"/>
     <springProperty scope="context" name="activeProfile" source="spring.profiles.active"/>
@@ -207,6 +207,16 @@
             <appender-ref ref="ASYNC-FILE-INFO" />
             <appender-ref ref="ASYNC-FILE-WARN" />
             <appender-ref ref="ASYNC-FILE-ERROR" />
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <logger name="br.com.dhg.testebexs" level="TRACE">
+            <appender-ref ref="ASYNC-Console" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="ASYNC-Console" />
         </root>
     </springProfile>
 
