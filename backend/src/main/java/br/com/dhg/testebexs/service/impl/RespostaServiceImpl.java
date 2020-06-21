@@ -3,7 +3,7 @@ package br.com.dhg.testebexs.service.impl;
 import br.com.dhg.testebexs.configuration.property.ApplicationProperties;
 import br.com.dhg.testebexs.dto.ExibicaoRespostasPaginadoDTO;
 import br.com.dhg.testebexs.dto.RespostaDTO;
-import br.com.dhg.testebexs.exception.NotFoundException;
+import br.com.dhg.testebexs.exception.PerguntaNaoAchadaException;
 import br.com.dhg.testebexs.model.Pergunta;
 import br.com.dhg.testebexs.model.Resposta;
 import br.com.dhg.testebexs.model.Usuario;
@@ -44,7 +44,7 @@ public class RespostaServiceImpl implements RespostaService {
         Optional<Pergunta> registroPergunta = perguntaRepository.findById(idPergunta);
 
         if (!registroPergunta.isPresent()) {
-            throw new NotFoundException(String.format("A pergunta com id %d não existe", idPergunta));
+            throw new PerguntaNaoAchadaException(idPergunta);
         }
 
         Usuario usuario = usuarioRepository.findByNome(nomeUsuario).get();
@@ -66,7 +66,7 @@ public class RespostaServiceImpl implements RespostaService {
     public ExibicaoRespostasPaginadoDTO buscarPaginado(Long idPergunta, Integer numeroPagina) {
 
         if (!perguntaRepository.existsById(idPergunta)) {
-            throw new NotFoundException(String.format("A pergunta com id %d não existe", idPergunta));
+            throw new PerguntaNaoAchadaException(idPergunta);
         }
 
         Page<Resposta> paginaRegistrosRespotas =
