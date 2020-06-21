@@ -5,9 +5,10 @@ import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
 import br.com.dhg.testebexs.dto.Wrapper;
 import br.com.dhg.testebexs.service.PerguntaService;
 import br.com.dhg.testebexs.util.ControllerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -25,6 +26,8 @@ public class PerguntasController {
 
     @Autowired
     private PerguntaService perguntaService;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,7 +48,9 @@ public class PerguntasController {
     @GetMapping
     public ExibicaoPerguntasPaginadoDTO buscarPaginaPerguntas(@RequestParam(required = false) Integer pagina) {
 
+        logger.info("Normalizando o numero da pagina");
         pagina = ControllerUtil.normalizarNumeroPagina(pagina);
+
         return perguntaService.buscarPaginado(pagina);
 
     }

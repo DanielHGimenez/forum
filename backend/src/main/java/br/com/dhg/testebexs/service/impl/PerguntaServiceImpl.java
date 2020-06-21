@@ -10,6 +10,8 @@ import br.com.dhg.testebexs.repository.RespostaRepository;
 import br.com.dhg.testebexs.repository.UsuarioRepository;
 import br.com.dhg.testebexs.service.PerguntaService;
 import br.com.dhg.testebexs.util.ServiceUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,19 +37,25 @@ public class PerguntaServiceImpl implements PerguntaService {
     @Autowired
     private ApplicationProperties applicationProperties;
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public Long publicar(String nomeUsuario, String pergunta) {
 
+        logger.info("Procurando usuario");
         Usuario usuario = usuarioRepository.findByNome(nomeUsuario).get();
 
+        logger.info("Montando pergunta");
         Pergunta registroPergunta = Pergunta.builder()
                 .texto(pergunta)
                 .usuario(usuario)
                 .dataCriacao(LocalDateTime.now(ZoneOffset.UTC))
                 .build();
 
+        logger.info("Salvando pergunta");
         perguntaRepository.save(registroPergunta);
 
+        logger.debug("Publicação gerada. Id da publicação: {}", registroPergunta.getId());
         return registroPergunta.getId();
 
     }
@@ -55,15 +63,18 @@ public class PerguntaServiceImpl implements PerguntaService {
     @Override
     public ExibicaoPerguntasPaginadoDTO buscarPaginado(Integer numeroPagina) {
 
-        Page<Pergunta> paginaPerguntas = perguntaRepository.findAll(
-                PageRequest.of(
-                        ServiceUtil.corrigirNumeroPagina(numeroPagina),
-                        applicationProperties.getQuantidadePerguntasPagina()
-                )
-        );
+        logger.info("Procurando perguntas");
+        Page<Pergunta> paginaPerguntas =
+            perguntaRepository.findAll(
+                    PageRequest.of(
+                            ServiceUtil.corrigirNumeroPagina(numeroPagina),
+                            applicationProperties.getQuantidadePerguntasPagina()
+                    )
+            );
 
         List<PerguntaDTO> perguntasDTO = new LinkedList<>();
 
+        logger.info("Montando lista de perguntas");
         paginaPerguntas.forEach(pergunta -> {
 
             Integer quantidadeRespostas = respostaRepository.countByPergunta(pergunta);
@@ -78,6 +89,7 @@ public class PerguntaServiceImpl implements PerguntaService {
 
         });
 
+        logger.info("Montando retorno");
         return ExibicaoPerguntasPaginadoDTO.builder()
                 .perguntas(perguntasDTO)
                 .paginaAtual(numeroPagina)

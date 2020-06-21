@@ -12,6 +12,8 @@ import br.com.dhg.testebexs.repository.RespostaRepository;
 import br.com.dhg.testebexs.repository.UsuarioRepository;
 import br.com.dhg.testebexs.service.RespostaService;
 import br.com.dhg.testebexs.util.ServiceUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,17 +40,23 @@ public class RespostaServiceImpl implements RespostaService {
     @Autowired
     private ApplicationProperties properties;
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public Long publicar(Long idPergunta, String nomeUsuario, String resposta) {
 
+        logger.info("Procurando a pergunta");
         Optional<Pergunta> registroPergunta = perguntaRepository.findById(idPergunta);
 
         if (!registroPergunta.isPresent()) {
+            logger.error("Pergunta com id {}, não existe", idPergunta);
             throw new PerguntaNaoAchadaException(idPergunta);
         }
 
+        logger.info("Procurando usuario");
         Usuario usuario = usuarioRepository.findByNome(nomeUsuario).get();
 
+        logger.info("Montando resposta");
         Resposta registroResposta = Resposta.builder()
                 .texto(resposta)
                 .dataCriacao(LocalDateTime.now(ZoneOffset.UTC))
@@ -56,8 +64,10 @@ public class RespostaServiceImpl implements RespostaService {
                 .usuario(usuario)
                 .build();
 
+        logger.info("Salvando resposta");
         respostaRepository.save(registroResposta);
 
+        logger.debug("Publicação gerada. Id da publicação: {}", registroResposta.getId());
         return registroResposta.getId();
 
     }
@@ -66,9 +76,11 @@ public class RespostaServiceImpl implements RespostaService {
     public ExibicaoRespostasPaginadoDTO buscarPaginado(Long idPergunta, Integer numeroPagina) {
 
         if (!perguntaRepository.existsById(idPergunta)) {
+            logger.error("Pergunta com id {}, não existe", idPergunta);
             throw new PerguntaNaoAchadaException(idPergunta);
         }
 
+        logger.info("Procurando as respostas");
         Page<Resposta> paginaRegistrosRespotas =
                 respostaRepository.findByPerguntaId(
                         idPergunta,
@@ -80,6 +92,7 @@ public class RespostaServiceImpl implements RespostaService {
 
         List<RespostaDTO> respostasDTOS = new LinkedList<RespostaDTO>();
 
+        logger.info("Montando lista de respostas");
         paginaRegistrosRespotas.forEach(resposta -> {
 
             RespostaDTO respostaDTO = RespostaDTO.builder()
@@ -91,6 +104,7 @@ public class RespostaServiceImpl implements RespostaService {
 
         });
 
+        logger.info("Montando retorno");
         return ExibicaoRespostasPaginadoDTO.builder()
                 .respostas(respostasDTOS)
                 .paginaAtual(numeroPagina)
