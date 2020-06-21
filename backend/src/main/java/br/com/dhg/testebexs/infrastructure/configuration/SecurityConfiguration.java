@@ -1,9 +1,9 @@
-package br.com.dhg.testebexs.configuration;
+package br.com.dhg.testebexs.infrastructure.configuration;
 
-import br.com.dhg.testebexs.configuration.property.SecurityProperties;
-import br.com.dhg.testebexs.security.AutenticacaoFilter;
-import br.com.dhg.testebexs.security.AutorizacaoFilter;
-import br.com.dhg.testebexs.security.UserDetailsServiceImpl;
+import br.com.dhg.testebexs.infrastructure.property.SecurityProperties;
+import br.com.dhg.testebexs.infrastructure.security.AutenticacaoFilter;
+import br.com.dhg.testebexs.infrastructure.security.AutorizacaoFilter;
+import br.com.dhg.testebexs.infrastructure.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

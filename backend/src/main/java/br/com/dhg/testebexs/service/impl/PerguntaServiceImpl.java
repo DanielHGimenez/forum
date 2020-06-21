@@ -1,6 +1,6 @@
 package br.com.dhg.testebexs.service.impl;
 
-import br.com.dhg.testebexs.configuration.property.ApplicationProperties;
+import br.com.dhg.testebexs.infrastructure.property.ApplicationProperties;
 import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
 import br.com.dhg.testebexs.dto.PerguntaDTO;
 import br.com.dhg.testebexs.model.Pergunta;

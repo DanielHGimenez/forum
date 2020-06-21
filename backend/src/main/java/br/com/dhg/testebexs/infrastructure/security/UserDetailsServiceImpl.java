@@ -1,4 +1,4 @@
-package br.com.dhg.testebexs.security;
+package br.com.dhg.testebexs.infrastructure.security;
 
 import br.com.dhg.testebexs.model.Usuario;
 import br.com.dhg.testebexs.repository.UsuarioRepository;
@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 

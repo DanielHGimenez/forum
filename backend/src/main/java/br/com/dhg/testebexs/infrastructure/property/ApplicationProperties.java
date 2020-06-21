@@ -1,4 +1,4 @@
-package br.com.dhg.testebexs.configuration.property;
+package br.com.dhg.testebexs.infrastructure.property;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

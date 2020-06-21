@@ -1,6 +1,6 @@
-package br.com.dhg.testebexs.security;
+package br.com.dhg.testebexs.infrastructure.security;
 
-import br.com.dhg.testebexs.configuration.property.SecurityProperties;
+import br.com.dhg.testebexs.infrastructure.property.SecurityProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
