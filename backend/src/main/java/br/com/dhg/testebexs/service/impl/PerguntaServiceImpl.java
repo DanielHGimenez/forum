@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -68,7 +69,8 @@ public class PerguntaServiceImpl implements PerguntaService {
             perguntaRepository.findAll(
                     PageRequest.of(
                             ServiceUtil.corrigirNumeroPagina(numeroPagina),
-                            applicationProperties.getQuantidadePerguntasPagina()
+                            applicationProperties.getQuantidadePerguntasPagina(),
+                            Sort.by("dataCriacao").descending()
                     )
             );
 

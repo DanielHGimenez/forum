@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -86,7 +87,8 @@ public class RespostaServiceImpl implements RespostaService {
                         idPergunta,
                         PageRequest.of(
                                 ServiceUtil.corrigirNumeroPagina(numeroPagina),
-                                properties.getQuantidadeRespostasPagina()
+                                properties.getQuantidadeRespostasPagina(),
+                                Sort.by("dataCriacao").descending()
                         )
                 );
 
