@@ -1,4 +1,4 @@
-package br.com.dhg.testebexs.controller;
+package br.com.dhg.testebexs.exception.handler;
 
 import br.com.dhg.testebexs.dto.ErroValidacaoCampoBodyDTO;
 import br.com.dhg.testebexs.dto.Wrapper;
