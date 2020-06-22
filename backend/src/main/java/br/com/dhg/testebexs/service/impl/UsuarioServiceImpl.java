@@ -1,5 +1,6 @@
 package br.com.dhg.testebexs.service.impl;
 
+import br.com.dhg.testebexs.exception.NomeUsuarioJaCadastradoException;
 import br.com.dhg.testebexs.model.Usuario;
 import br.com.dhg.testebexs.repository.UsuarioRepository;
 import br.com.dhg.testebexs.service.UsuarioService;
@@ -18,6 +19,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void cadastrar(String nomeUsuario, String senha) {
+
+        if (repository.existsByNome(nomeUsuario)) {
+            throw new NomeUsuarioJaCadastradoException(nomeUsuario);
+        }
 
         Usuario usuario = Usuario.builder()
                 .nome(nomeUsuario)
