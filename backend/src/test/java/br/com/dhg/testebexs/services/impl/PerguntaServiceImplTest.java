@@ -7,21 +7,17 @@ import br.com.dhg.testebexs.model.Pergunta;
 import br.com.dhg.testebexs.repository.PerguntaRepository;
 import br.com.dhg.testebexs.service.UsuarioService;
 import br.com.dhg.testebexs.service.impl.PerguntaServiceImpl;
-import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.ResultMatcher;
 
-import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,6 +25,7 @@ import java.util.stream.Collectors;
 @SpringBootTest
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class PerguntaServiceImplTest {
 
     @Autowired
@@ -46,16 +43,17 @@ public class PerguntaServiceImplTest {
     private String nomeUsuario;
     private String senha;
     private String pergunta;
-    Integer quantidadeItensCadastrados;
-    Integer quantidadeItensPagina1;
-    Integer quantidadeItensPagina2;
-    Integer quantidadePaginasEsperadas;
-    Map<Long, String> perguntasEsperadas;
+
+    private Integer quantidadeItensCadastrados;
+    private Integer quantidadeItensPagina1;
+    private Integer quantidadeItensPagina2;
+    private Integer quantidadePaginasEsperadas;
+    private Map<Long, String> perguntasEsperadas;
 
     @BeforeAll
     public void setup() {
 
-        nomeUsuario = "usuario ficticio";
+        nomeUsuario = "usuario teste pergunta";
         senha = "senha ficticia";
         pergunta = "Pergunta ficticia";
 
