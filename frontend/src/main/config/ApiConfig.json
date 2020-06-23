@@ -1,0 +1,5 @@
+{
+    "endereco" : "localhost",
+    "porta" : 8080,
+    "httpsEnabled" : false
+}
