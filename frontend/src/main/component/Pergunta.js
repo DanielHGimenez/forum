@@ -18,7 +18,7 @@ export default function Pergunta({ link = false, limit=false, id, texto, quantid
                 </Col>
             </Row>
             <Row className="about">
-                <Col className="ml-2">
+                <Col>
                     Quantidade de respostas: { quantidadeRespostas }
                 </Col>
             </Row>
