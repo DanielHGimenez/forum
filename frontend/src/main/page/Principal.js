@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import PublicarPergunta from '../component/PublicarPergunta';
-import Paginacao from '../component/Paginacao'
+import Paginacao from '../component/Paginacao';
+import Pergunta from '../component/Pergunta';
 import Api from '../service/Api';
 import '../style/Principal.css';
 
@@ -14,7 +14,7 @@ export default function Principal({ store }) {
     const [ perguntas, setPerguntas ] = useState([]);
 
     const irParaPagina = (pagina) => {
-        Api.buscarPerguntas(store.getState().credenciais, pagina)
+        Api.buscarPerguntas(pagina)
         .then(response => {
             setPerguntas(response.data.perguntas);
             setPaginaAtual(response.data.paginaAtual);
@@ -41,21 +41,15 @@ export default function Principal({ store }) {
             { 
                 perguntas && perguntas.map((pergunta, index) => {
                     return (
-                        <Row key={index} className="mb-2 px-2 py-3 pergunta">
-                            <Container>
-                                <Row className="mb-2">
-                                    <Col className="d-flex">
-                                        <Link className="texto" to={ "/perguntas/" + pergunta.id }>
-                                            { pergunta.texto }
-                                        </Link>
-                                    </Col>
-                                </Row>
-                                <Row className="about">
-                                    <Col className="ml-2">
-                                        Quantidade de respostas: { pergunta.quantidadeRespostas }
-                                    </Col>
-                                </Row>
-                            </Container>
+                        <Row className="mb-2">
+                            <Pergunta
+                                key={ index }
+                                link={ true }
+                                limit={ true }
+                                id={ pergunta.id }
+                                texto={ pergunta.texto }
+                                quantidadeRespostas={ pergunta.quantidadeRespostas }
+                            />
                         </Row>
                     );
                 })
