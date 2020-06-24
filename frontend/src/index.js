@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './main/style/Global.css';
-import Root from './main/page/Root';
+import RootPage from './main/page/RootPage';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <RootPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
