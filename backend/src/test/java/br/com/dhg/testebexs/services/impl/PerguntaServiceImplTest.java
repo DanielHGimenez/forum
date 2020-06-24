@@ -2,6 +2,7 @@ package br.com.dhg.testebexs.services.impl;
 
 import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
 import br.com.dhg.testebexs.dto.PerguntaDTO;
+import br.com.dhg.testebexs.exception.PerguntaNaoAchadaException;
 import br.com.dhg.testebexs.infrastructure.property.ApplicationProperties;
 import br.com.dhg.testebexs.model.Pergunta;
 import br.com.dhg.testebexs.repository.PerguntaRepository;
@@ -148,6 +149,24 @@ public class PerguntaServiceImplTest {
         Assertions.assertEquals(perguntasEsperadasPagina1, perguntasCadastradasPagina1);
         Assertions.assertEquals(idsEsperadosPagina2, idPerguntasCadastradasPagina2);
         Assertions.assertEquals(perguntasEsperadasPagina2, perguntasCadastradasPagina2);
+
+    }
+
+    @Test
+    public void buscarSucesso() {
+
+        Long id = perguntasEsperadas.keySet().stream().findFirst().get();
+        Assertions.assertNotNull(perguntaService.buscar(id));
+
+    }
+
+    @Test
+    public void buscarComErroPerguntaNaoAchada() {
+
+        Long id = 1_000_000L;
+        Assertions.assertThrows(PerguntaNaoAchadaException.class, () -> {
+            perguntaService.buscar(id);
+        });
 
     }
 
