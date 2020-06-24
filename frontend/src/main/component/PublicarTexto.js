@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ModalPublicarTexto from '../component/ModalPublicarTexto';
 import Button from './Button';
-import Api from '../service/Api';
 import '../style/PublicarTexto.css';
 
 

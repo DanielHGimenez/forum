@@ -32,7 +32,7 @@ export default function PerguntaPage({ store }) {
             irParaPagina(paginaAtual);
         })
         .catch((erro => {
-            if (erro.response.status == 403) {
+            if (erro.response.status === 403) {
                 store.dispatch({
                     type: Actions.LIMPAR_CREDENCIAIS
                 });

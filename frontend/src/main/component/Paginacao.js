@@ -15,7 +15,7 @@ export default function Paginacao({ paginaAtual, totalPaginas, onClick, classNam
                 <Pagination.Item onClick={ () => onClick(paginaAtual - 1) }>{ paginaAtual - 1 }</Pagination.Item>
             }
             <Pagination.Item active>{ paginaAtual }</Pagination.Item>
-            {paginaAtual != totalPaginas && 
+            {paginaAtual !== totalPaginas && 
                 <Pagination.Item onClick={ () => onClick(paginaAtual + 1) }>{ paginaAtual + 1 }</Pagination.Item>
             }
             {paginaAtual <= totalPaginas - 2 &&

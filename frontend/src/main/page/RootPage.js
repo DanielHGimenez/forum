@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createStore } from "redux";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import { Container, Row } from 'react-bootstrap';
 import PerguntaPage from './PerguntaPage';
