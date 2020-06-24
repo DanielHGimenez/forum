@@ -10,7 +10,6 @@ import { Container, Row } from 'react-bootstrap';
 import Principal from './Principal';
 import Pergunta from './Pergunta';
 import CredenciamentoHeader from '../component/CredenciamentoHeader';
-
 import Crendenciais from '../reducer/Credenciais';
 import '../style/Root.css';
 
@@ -21,14 +20,14 @@ export default function Root() {
 
     return (
         <Container fluid className="Root">
-            <CredenciamentoHeader store={store} />
+            <CredenciamentoHeader store={ store } />
             <Row>
                 <Router>
                     <Switch>
                         <Route path="/" exact>
-                            <Principal />
+                            <Principal store={ store } />
                         </Route>
-                        <Route path="/perguntas/:id" children={<Pergunta />} />
+                        <Route path="/perguntas/:id" children={<Pergunta store={ store } />} />
                     </Switch>
                 </Router>
             </Row>
