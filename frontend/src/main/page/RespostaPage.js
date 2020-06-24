@@ -6,6 +6,7 @@ import {
 import { Container, Row, Col } from 'react-bootstrap';
 import Pergunta from '../component/Pergunta';
 import Resposta from '../component/Resposta';
+import Paginacao from '../component/Paginacao';
 import PublicarTexto from '../component/PublicarTexto';
 import { CredenciaisActions as Actions } from '../reducer/CredenciaisActions.js';
 import Api from '../service/Api';
@@ -103,7 +104,12 @@ export default function RespostaPage({ store }) {
                         </Row>
                     )
                 })
-            }            
+            }
+            <Row>
+                <Col className="d-flex">
+                    <Paginacao className="mx-auto" paginaAtual={ paginaAtual } totalPaginas={ totalPaginas } onClick={ irParaPagina } />
+                </Col>
+            </Row>    
         </Container>
     )
 }
