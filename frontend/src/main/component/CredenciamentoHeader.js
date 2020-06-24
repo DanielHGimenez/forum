@@ -19,6 +19,8 @@ export default function CredenciamentoHeader({ store }) {
     store.subscribe(() => {
         if (store.getState().credenciais != null) {
             setIsAutenticado(true);
+        } else {
+            setIsAutenticado(false);
         }
     });
 
