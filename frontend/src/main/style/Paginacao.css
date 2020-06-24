@@ -1,0 +1,10 @@
+.Paginacao .page-item .page-link {
+    background: #333;
+    color: #eee;
+}
+
+.Paginacao .page-item.active .page-link {
+    background: #eee;
+    color: #333;
+    border: 1px solid #333;
+}
