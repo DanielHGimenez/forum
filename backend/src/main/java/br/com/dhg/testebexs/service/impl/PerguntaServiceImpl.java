@@ -112,10 +112,12 @@ public class PerguntaServiceImpl implements PerguntaService {
         }
 
         Pergunta pergunta = registroPergunta.get();
+        Integer quantidadeRespostas = respostaRepository.countByPergunta(pergunta);
 
         return PerguntaDTO.builder()
                 .id(pergunta.getId())
                 .texto(pergunta.getTexto())
+                .quantidadeRespostas(quantidadeRespostas)
                 .build();
 
     }
