@@ -2,6 +2,7 @@ package br.com.dhg.testebexs.controller;
 
 import br.com.dhg.testebexs.dto.CadastroPerguntaDTO;
 import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
+import br.com.dhg.testebexs.dto.PerguntaDTO;
 import br.com.dhg.testebexs.dto.Wrapper;
 import br.com.dhg.testebexs.service.PerguntaService;
 import br.com.dhg.testebexs.util.ControllerUtil;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +55,11 @@ public class PerguntasController {
 
         return perguntaService.buscarPaginado(pagina);
 
+    }
+
+    @GetMapping("/{id}")
+    public PerguntaDTO buscarPergunta(@PathVariable("id") Long idPergunta) {
+        return perguntaService.buscar(idPergunta);
     }
 
 }

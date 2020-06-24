@@ -1,5 +1,6 @@
 package br.com.dhg.testebexs.service.impl;
 
+import br.com.dhg.testebexs.exception.PerguntaNaoAchadaException;
 import br.com.dhg.testebexs.infrastructure.property.ApplicationProperties;
 import br.com.dhg.testebexs.dto.ExibicaoPerguntasPaginadoDTO;
 import br.com.dhg.testebexs.dto.PerguntaDTO;
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PerguntaServiceImpl implements PerguntaService {
@@ -99,5 +101,24 @@ public class PerguntaServiceImpl implements PerguntaService {
                 .build();
 
     }
+
+    @Override
+    public PerguntaDTO buscar(Long idPergunta) {
+
+        Optional<Pergunta> registroPergunta = perguntaRepository.findById(idPergunta);
+
+        if (!registroPergunta.isPresent()) {
+            throw new PerguntaNaoAchadaException(idPergunta);
+        }
+
+        Pergunta pergunta = registroPergunta.get();
+
+        return PerguntaDTO.builder()
+                .id(pergunta.getId())
+                .texto(pergunta.getTexto())
+                .build();
+
+    }
+
 
 }
