@@ -14,7 +14,3 @@ export default function rootReducer(state = {
             return state;
     }
 }
-
-var last =  function(array) {
-    return array.slice(Math.max(array.length - 1, 0));  
-};
