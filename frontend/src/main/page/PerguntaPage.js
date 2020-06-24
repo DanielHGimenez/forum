@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import PublicarPergunta from '../component/PublicarPergunta';
+import PublicarTexto from '../component/PublicarTexto';
 import Paginacao from '../component/Paginacao';
 import Pergunta from '../component/Pergunta';
 import Api from '../service/Api';
-import '../style/Principal.css';
+import { CredenciaisActions as Actions } from '../reducer/CredenciaisActions.js';
+import '../style/PerguntaPage.css';
 
 
-export default function Principal({ store }) {
+export default function PerguntaPage({ store }) {
 
     const [ paginaAtual, setPaginaAtual ] = useState(1);
     const [ totalPaginas, setTotalPaginas ] = useState(1);
@@ -25,8 +26,19 @@ export default function Principal({ store }) {
         }));
     };
 
-    const onPublicarPergunta = () => {
-        irParaPagina(paginaAtual);
+    const onSubmit = (pergunta) => {
+        Api.publicarPergunta(store.getState().credenciais, pergunta)
+        .then((response) => {
+            irParaPagina(paginaAtual);
+        })
+        .catch((erro => {
+            if (erro.response.status == 403) {
+                store.dispatch({
+                    type: Actions.LIMPAR_CREDENCIAIS
+                });
+            }
+            console.log(erro);
+        }));
     };
 
     useEffect(() => {
@@ -36,7 +48,7 @@ export default function Principal({ store }) {
     return (
         <Container className="Principal">
             <Row className="my-3">
-                <PublicarPergunta store={ store } onPublicar={ onPublicarPergunta } />
+                <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua pergunta a seguir:" />
             </Row>
             { 
                 perguntas && perguntas.map((pergunta, index) => {

@@ -7,14 +7,14 @@ import {
     Link
 } from "react-router-dom";
 import { Container, Row } from 'react-bootstrap';
-import Principal from './Principal';
+import PerguntaPage from './PerguntaPage';
 import RespostaPage from './RespostaPage';
 import CredenciamentoHeader from '../component/CredenciamentoHeader';
 import Crendenciais from '../reducer/Credenciais';
-import '../style/Root.css';
+import '../style/RootPage.css';
 
 
-export default function Root() {
+export default function RootPage() {
 
     const store = createStore(Crendenciais);
 
@@ -25,7 +25,7 @@ export default function Root() {
                 <Router>
                     <Switch>
                         <Route path="/" exact>
-                            <Principal store={ store } />
+                            <PerguntaPage store={ store } />
                         </Route>
                         <Route path="/perguntas/:id" children={<RespostaPage store={ store } />} />
                     </Switch>

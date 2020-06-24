@@ -6,7 +6,10 @@ import {
 import { Container, Row, Col } from 'react-bootstrap';
 import Pergunta from '../component/Pergunta';
 import Resposta from '../component/Resposta';
+import PublicarTexto from '../component/PublicarTexto';
+import { CredenciaisActions as Actions } from '../reducer/CredenciaisActions.js';
 import Api from '../service/Api';
+import '../style/RespostaPage.css';
 
 
 export default function RespostaPage({ store }) {
@@ -37,15 +40,36 @@ export default function RespostaPage({ store }) {
         }));
     };
 
+    const onSubmit = (resposta) => {
+        Api.publicarResposta(store.getState().credenciais, id, resposta)
+        .then((response) => {
+            irParaPagina(paginaAtual);
+        })
+        .catch((erro => {
+            if (erro.response.status == 403) {
+                store.dispatch({
+                    type: Actions.LIMPAR_CREDENCIAIS
+                });
+            }
+            console.log(erro);
+        }));
+    };
+
     useEffect(() => {
         irParaPagina(paginaAtual);
     }, []);
 
     return (
-        <Container>
+        <Container className="RespostaPage">
             <Row className="my-4">
-                <Col>
-                    <Link to="/">Voltar</Link>
+                <Col className="d-flex">
+                    <Link className="voltar mr-2" to="/">
+                        <span className="material-icons">
+                            keyboard_arrow_left
+                        </span>
+                        <span className="texto">Voltar</span>
+                    </Link>
+                    <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua resposta a seguir:" />
                 </Col>
             </Row>
             <Row>
