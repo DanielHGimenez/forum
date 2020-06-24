@@ -52,8 +52,10 @@ export default class Api {
         });
     }
 
-    static publicarResposta(token, idPergunta) {
+    static publicarResposta(token, idPergunta, resposta) {
         return axios.post(montarUrl() + '/perguntas/' + idPergunta + '/respostas', {
+            resposta: resposta
+        }, {
             headers : {
                 'Authorization' : token
             }
