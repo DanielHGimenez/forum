@@ -1,0 +1,23 @@
+.Pergunta {
+    background-image: linear-gradient(to right, rgb(211, 204, 227), rgb(233, 228, 240));
+    border-radius: 4px;
+}
+
+.Pergunta .texto {
+    color: #333;
+    font-size: .9rem;
+    text-decoration: none;
+}
+
+.Pergunta .limit {
+    max-height: 3rem;
+    overflow: hidden; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Pergunta .about > div {
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
+    font-size: .7rem;
+}
