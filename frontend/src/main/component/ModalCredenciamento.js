@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {
     Modal, 
     Form,
 } from 'react-bootstrap';
+import Button from './Button';
 import '../style/ModalCredenciamento.css';
 
 export default function ModalCredenciamento(props) {

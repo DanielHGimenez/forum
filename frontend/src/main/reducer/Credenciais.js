@@ -1,12 +1,13 @@
+import { CredenciaisActions as Actions } from './CredenciaisActions.js';
 
 export default function rootReducer(state = {
     credenciais: null
 }, action) {
     switch (action.type) {
-        case "ADICIONAR_CREDENCIAIS":
+        case Actions.ADICIONAR_CREDENCIAIS:
             state.credenciais = action.credenciais;
             return state;
-        case "LIMPAR_CREDENCIAIS":
+        case Actions.LIMPAR_CREDENCIAIS:
             state.credenciais = null;
             return state;
         default:

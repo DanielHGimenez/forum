@@ -1,0 +1,5 @@
+
+export const CredenciaisActions = {
+    ADICIONAR_CREDENCIAIS : "ADICIONAR_CREDENCIAIS",
+    LIMPAR_CREDENCIAIS : "LIMPAR_CREDENCIAIS"
+};
