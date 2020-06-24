@@ -186,7 +186,6 @@
         <logger name="br.com.dhg.testebexs" level="TRACE">
             <appender-ref ref="ASYNC-FILE-DEBUG" />
             <appender-ref ref="ASYNC-FILE-STACKTRACE" />
-            <appender-ref ref="ASYNC-Console" />
         </logger>
 
         <root level="INFO">
@@ -211,10 +210,7 @@
     </springProfile>
 
     <springProfile name="test">
-        <logger name="br.com.dhg.testebexs" level="TRACE">
-            <appender-ref ref="ASYNC-Console" />
-        </logger>
-
+        <logger name="br.com.dhg.testebexs" level="TRACE" />
         <root level="INFO">
             <appender-ref ref="ASYNC-Console" />
         </root>
