@@ -22,12 +22,16 @@ export default class Api {
         });
     }
 
-    static buscarPerguntas(token, pagina) {
+    static buscarPerguntas(pagina) {
         return axios.get(montarUrl() + '/perguntas', {
             params : {
                 pagina : pagina
             }
         });
+    }
+
+    static buscarPergunta(idPergunta) {
+        return axios.get(montarUrl() + '/perguntas/' + idPergunta);
     }
 
     static publicarPergunta(token, pergunta) {
