@@ -11,6 +11,8 @@ substituindo **{PORTA}** pela porta desejada.
 A aplicação contém ***Swagger*** e ***SwaggerUI***, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
 [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
 
+Para baixar a Collection do Postman acesse [aqui](https://github.com/DanielHGimenez/teste-bexs/blob/master/Bexs.postman_collection.json)
+
 ### Requisitos
 #### Para buildar o backend é necessario:
  - Ter instalado o [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
