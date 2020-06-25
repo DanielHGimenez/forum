@@ -19,6 +19,8 @@ Tenha em mente que existem dois perfis de execução disponiveis:
  - **prod**: Perfil de execução voltado para ser usado no ambiente de produção. (Mantém o schema)
 
 ##### Configuração
+Para configurar o Schema no banco de dados execute o script do arquivo [database.sql](https://github.com/DanielHGimenez/teste-bexs/blob/master/database.sql) no banco de dados MySQL.
+
 Para executar o projeto, deve-se primeiro definir as configurações de acesso ao banco de dados. 
 Essa configuração podem ser feitas internamente ou externamente ao projeto. 
 Os arquivos de configuração ficam dentro da pasta *resources* e são diferentes para cada perfil de execução escolhido.
