@@ -2,8 +2,6 @@
 
 Forum é um projeto teste para entrar no banco Bexs
 
-[TOC]
-
 ## BackEnd
 ### Requisitos
 #### Para buildar o backend é necessario:
