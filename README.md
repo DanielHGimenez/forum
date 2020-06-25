@@ -15,8 +15,8 @@ Forum é um projeto teste para entrar no banco Bexs
 #### Preparação
 ##### Perfis de execução
 Tenha em mente que existem dois perfis de execução disponiveis:
- - **dev**: Perfil de execução voltado para ser usado no fluxo de desenvolvimento. (Recria o schema das tabelas a cada execução)
- - **prod**: Perfil de execução voltado para ser usado no ambiente de produção. (Mantém o schema)
+ - **dev**: Perfil de execução voltado para ser usado no fluxo de desenvolvimento.
+ - **prod**: Perfil de execução voltado para ser usado no ambiente de produção.
 
 ##### Configuração
 Para configurar o Schema no banco de dados execute o script do arquivo [database.sql](https://github.com/DanielHGimenez/teste-bexs/blob/master/database.sql) no banco de dados MySQL.
@@ -60,6 +60,9 @@ substituindo *{PROFILE}* pelo perfil de execução escolhido, e substituindo *{A
 ```sh
 java -Dspring.profiles.active={PROFILE} -jar {ARQUIVO_JAR}
 ```
+
+> A aplicação contém **Swagger** e **SwaggerUI**, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
+> [localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
 
 # FrontEnd
 ### Requisitos
