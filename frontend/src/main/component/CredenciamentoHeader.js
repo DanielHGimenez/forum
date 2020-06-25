@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Row, 
     Col,
@@ -19,9 +19,20 @@ export default function CredenciamentoHeader({ store }) {
         if (store.getState().credenciais != null) {
             setIsAutenticado(true);
         } else {
+            localStorage.removeItem('credenciais');
             setIsAutenticado(false);
         }
     });
+
+    useEffect(() => {
+        let credenciais = localStorage.getItem('credenciais');
+        if (credenciais) {
+            store.dispatch({
+                type: Actions.ADICIONAR_CREDENCIAIS,
+                credenciais: credenciais
+            });
+        }
+    }, []);
 
     const efetuarLogin = (usuario, senha) => {
         Api.logarConta(usuario, senha)
@@ -31,7 +42,7 @@ export default function CredenciamentoHeader({ store }) {
                 type: Actions.ADICIONAR_CREDENCIAIS,
                 credenciais: token
             });
-            console.log('Autenticado ' + store.getState().credenciais);
+            localStorage.setItem('credenciais', token);
         })
         .catch(function (error) {
             console.log(error);
