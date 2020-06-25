@@ -25,10 +25,6 @@ Os arquivos de configuração ficam dentro da pasta *resources* e são diferente
  - Arquivo do perfil *dev*: [application-dev.properties](https://github.com/DanielHGimenez/teste-bexs/blob/master/backend/src/main/resources/application-dev.properties)
  - Arquivo do perfil *prod*: [application-prod.properties](https://github.com/DanielHGimenez/teste-bexs/blob/master/backend/src/main/resources/application-prod.properties)
 
-> Atenção: o backend roda na porta 8080 por padrão. 
-> Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
-> substituindo **{PORTA}** pela porta desejada.
-
 ##### internamente
 Para realizar a configuração internamente deve-se preencher os dados faltantes do arquivo de configuração
 do perfil de execução escolhido.
@@ -58,9 +54,13 @@ substituindo *{PROFILE}* pelo perfil de execução escolhido, e substituindo *{A
 ```sh
 java -Dspring.profiles.active={PROFILE} -jar {ARQUIVO_JAR}
 ```
+### Atenção: 
+o backend roda na porta 8080 por padrão. 
+Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
+substituindo **{PORTA}** pela porta desejada.
 
-> A aplicação contém **Swagger** e **SwaggerUI**, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
-> [localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
+A aplicação contém *Swagger* e *SwaggerUI*, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
+[localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
 
 # FrontEnd
 ### Requisitos
