@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "feeda698-e52f-46ec-9ba4-101f187e6677",
+		"name": "Bexs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro de conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"exemplo\",\n\t\"senha\": \"exemplo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/autenticacao/cadastro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"autenticacao",
+						"cadastro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/autenticacao/login?usuario=exemplo&senha=exemplo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"autenticacao",
+						"login"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "exemplo",
+							"description": "nome de usuario"
+						},
+						{
+							"key": "senha",
+							"value": "exemplo",
+							"description": "senha de acesso"
+						}
+					]
+				},
+				"description": "Obter credenciais para acessar rotas privadas. A credencial é retornada no Header no campo Authorization."
+			},
+			"response": []
+		},
+		{
+			"name": "Publicar Pergunta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"description": "token obtido no header Authorization da rota de login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"pergunta\": \"Isso é uma pergunta exemplo?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/perguntas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perguntas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exibir perguntas paginado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/perguntas?pagina=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perguntas"
+					],
+					"query": [
+						{
+							"key": "pagina",
+							"value": "1",
+							"description": " Começa com o valor 1. Se não for mandado um número de página automaticamente será interpretado que a página requerida é a primeira"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publicar resposta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"description": "token obtido no header Authorization da rota de login",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"resposta\": \"Resposta de exemplo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/perguntas/{id}/respostas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perguntas",
+						"{id}",
+						"respostas"
+					]
+				},
+				"description": "No lugar de {id} coloque o id da pergunta onde será publicada a resposta"
+			},
+			"response": []
+		},
+		{
+			"name": "Exibir respostas paginado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/perguntas/{id}/respostas?pagina=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"perguntas",
+						"{id}",
+						"respostas"
+					],
+					"query": [
+						{
+							"key": "pagina",
+							"value": "1",
+							"description": " Começa com o valor 1. Se não for mandado um número de página automaticamente será interpretado que a página requerida é a primeira"
+						}
+					]
+				},
+				"description": "No lugar de {id} coloque o id da pergunta da qual irá consultar as respostas"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar pergunta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "No lugar de {id} coloque o id da pergunta que deseja consultar"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
