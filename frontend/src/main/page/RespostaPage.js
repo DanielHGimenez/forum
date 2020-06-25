@@ -19,7 +19,7 @@ export default function RespostaPage({ store }) {
     const [ pergunta, setPergunta ] = useState({});
     const [ respostas, setRespostas ] = useState([]);
     const [ paginaAtual, setPaginaAtual ] = useState(1);
-    const [ totalPaginas, setTotalPaginas ] = useState(1);
+    const [ totalPaginas, setTotalPaginas ] = useState(0);
 
     const irParaPagina = (pagina) => {
         Api.buscarPergunta(id)
@@ -70,7 +70,7 @@ export default function RespostaPage({ store }) {
                         </span>
                         <span className="texto">Voltar</span>
                     </Link>
-                    <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua resposta a seguir:" />
+                    <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua resposta a seguir:" textoBotao="Publicar resposta" />
                 </Col>
             </Row>
             <Row>

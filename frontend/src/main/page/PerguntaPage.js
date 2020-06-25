@@ -11,7 +11,7 @@ import '../style/PerguntaPage.css';
 export default function PerguntaPage({ store }) {
 
     const [ paginaAtual, setPaginaAtual ] = useState(1);
-    const [ totalPaginas, setTotalPaginas ] = useState(1);
+    const [ totalPaginas, setTotalPaginas ] = useState(0);
     const [ perguntas, setPerguntas ] = useState([]);
 
     const irParaPagina = (pagina) => {
@@ -48,7 +48,7 @@ export default function PerguntaPage({ store }) {
     return (
         <Container className="Principal">
             <Row className="my-3">
-                <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua pergunta a seguir:" />
+                <PublicarTexto store={ store } onSubmit={ onSubmit } labelModal="Digite sua pergunta a seguir:" textoBotao="Publicar pergunta" />
             </Row>
             { 
                 perguntas && perguntas.map((pergunta, index) => {

@@ -4,7 +4,7 @@ import Button from './Button';
 import '../style/PublicarTexto.css';
 
 
-export default function PublicarTexto({ store, onSubmit, labelModal }) {
+export default function PublicarTexto({ store, onSubmit, labelModal, textoBotao }) {
 
     const [ isAutenticado, setIsAutenticado ] = useState(false);
     const [ isPublicarTexto, setIsPublicarTexto ] = useState(false);
@@ -37,7 +37,7 @@ export default function PublicarTexto({ store, onSubmit, labelModal }) {
                 label={ labelModal }
             />
             {isAutenticado &&
-                <Button className="Publicar-texto" onClick={ () => setIsPublicarTexto(true) }>Publicar</Button>
+                <Button className="Publicar-texto" onClick={ () => setIsPublicarTexto(true) }>{ textoBotao }</Button>
             }
         </>
     )
