@@ -59,7 +59,7 @@ o backend roda na porta 8080 por padrão.
 Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
 substituindo **{PORTA}** pela porta desejada.
 
-A aplicação contém *Swagger* e *SwaggerUI*, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
+A aplicação contém ***Swagger*** e ***SwaggerUI***, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
 [localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
 
 # FrontEnd
