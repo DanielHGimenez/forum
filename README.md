@@ -3,6 +3,14 @@
 Forum é um projeto teste para entrar no banco Bexs
 
 ## BackEnd
+### Atenção: 
+o backend roda na porta 8080 por padrão. 
+Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
+substituindo **{PORTA}** pela porta desejada.
+
+A aplicação contém ***Swagger*** e ***SwaggerUI***, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
+[localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
+
 ### Requisitos
 #### Para buildar o backend é necessario:
  - Ter instalado o [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
@@ -12,13 +20,11 @@ Forum é um projeto teste para entrar no banco Bexs
  - Ter instalado localmente ou em um server remoto o banco de dados MySql versão 5.x
 
 ### Executando o projeto
-#### Preparação
-##### Perfis de execução
+#### Configuração
 Tenha em mente que existem dois perfis de execução disponiveis:
- - **dev**: Perfil de execução voltado para ser usado no fluxo de desenvolvimento. (Recria o schema das tabelas a cada execução)
- - **prod**: Perfil de execução voltado para ser usado no ambiente de produção. (Mantém o schema)
+ - **dev**: Perfil de execução voltado para ser usado no fluxo de desenvolvimento.
+ - **prod**: Perfil de execução voltado para ser usado no ambiente de produção.
 
-##### Configuração
 Para configurar o Schema no banco de dados execute o script do arquivo [database.sql](https://github.com/DanielHGimenez/teste-bexs/blob/master/database.sql) no banco de dados MySQL.
 
 Para executar o projeto, deve-se primeiro definir as configurações de acesso ao banco de dados. 
@@ -27,15 +33,11 @@ Os arquivos de configuração ficam dentro da pasta *resources* e são diferente
  - Arquivo do perfil *dev*: [application-dev.properties](https://github.com/DanielHGimenez/teste-bexs/blob/master/backend/src/main/resources/application-dev.properties)
  - Arquivo do perfil *prod*: [application-prod.properties](https://github.com/DanielHGimenez/teste-bexs/blob/master/backend/src/main/resources/application-prod.properties)
 
-> Atenção: o backend roda na porta 8080 por padrão. 
-> Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
-> substituindo **{PORTA}** pela porta desejada.
-
-###### internamente
+##### internamente
 Para realizar a configuração internamente deve-se preencher os dados faltantes do arquivo de configuração
 do perfil de execução escolhido.
 
-###### externamente
+##### externamente
 Para realizar a configuração internamente deve-se preencher os dados faltantes do arquivo de configuração
 do perfil de execução escolhido e coloca-lo dentro de umas pasta *config* que deve ser criada na mesma 
 pasta onde será executado o backend. Caso esteja executando o projeto e não um arquivo *.jar*, essa pasta
@@ -70,8 +72,7 @@ java -Dspring.profiles.active={PROFILE} -jar {ARQUIVO_JAR}
  - Caso queira expor em formato de produção, é necessario ter um servidor Http. Por exemplo: [Apache](https://httpd.apache.org/).
 
 ### Executando o projeto
-#### Preparação
-##### Configuração
+#### Configuração
 Para executar o projeto, deve-se primeiro definir as configurações de acesso a API definidos no arquivo [ApiConfig.json](https://github.com/DanielHGimenez/teste-bexs/blob/master/frontend/src/main/config/ApiConfig.json). 
 
 #### Execução
