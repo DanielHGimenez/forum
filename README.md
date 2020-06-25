@@ -3,6 +3,14 @@
 Forum é um projeto teste para entrar no banco Bexs
 
 ## BackEnd
+### Atenção: 
+o backend roda na porta 8080 por padrão. 
+Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
+substituindo **{PORTA}** pela porta desejada.
+
+A aplicação contém ***Swagger*** e ***SwaggerUI***, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
+[localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
+
 ### Requisitos
 #### Para buildar o backend é necessario:
  - Ter instalado o [JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
@@ -54,13 +62,6 @@ substituindo *{PROFILE}* pelo perfil de execução escolhido, e substituindo *{A
 ```sh
 java -Dspring.profiles.active={PROFILE} -jar {ARQUIVO_JAR}
 ```
-### Atenção: 
-o backend roda na porta 8080 por padrão. 
-Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
-substituindo **{PORTA}** pela porta desejada.
-
-A aplicação contém ***Swagger*** e ***SwaggerUI***, que é como se fosse um Postman. É possivel acessar a funcionalidade através do navegador usando a URL
-[localhost:8080/swagger-ui.html](localhost:8080/swagger-ui.html). Esta funcionalidade só está disponivel quando o backend é executado com perfil de execução **dev**.
 
 # FrontEnd
 ### Requisitos
