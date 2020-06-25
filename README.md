@@ -12,13 +12,11 @@ Forum é um projeto teste para entrar no banco Bexs
  - Ter instalado localmente ou em um server remoto o banco de dados MySql versão 5.x
 
 ### Executando o projeto
-#### Preparação
-##### Perfis de execução
+#### Configuração
 Tenha em mente que existem dois perfis de execução disponiveis:
  - **dev**: Perfil de execução voltado para ser usado no fluxo de desenvolvimento.
  - **prod**: Perfil de execução voltado para ser usado no ambiente de produção.
 
-##### Configuração
 Para configurar o Schema no banco de dados execute o script do arquivo [database.sql](https://github.com/DanielHGimenez/teste-bexs/blob/master/database.sql) no banco de dados MySQL.
 
 Para executar o projeto, deve-se primeiro definir as configurações de acesso ao banco de dados. 
@@ -31,11 +29,11 @@ Os arquivos de configuração ficam dentro da pasta *resources* e são diferente
 > Para mudar a porta da aplicação adicione **server.port={PORTA}** ao arquivo de configuração, 
 > substituindo **{PORTA}** pela porta desejada.
 
-###### internamente
+##### internamente
 Para realizar a configuração internamente deve-se preencher os dados faltantes do arquivo de configuração
 do perfil de execução escolhido.
 
-###### externamente
+##### externamente
 Para realizar a configuração internamente deve-se preencher os dados faltantes do arquivo de configuração
 do perfil de execução escolhido e coloca-lo dentro de umas pasta *config* que deve ser criada na mesma 
 pasta onde será executado o backend. Caso esteja executando o projeto e não um arquivo *.jar*, essa pasta
@@ -73,8 +71,7 @@ java -Dspring.profiles.active={PROFILE} -jar {ARQUIVO_JAR}
  - Caso queira expor em formato de produção, é necessario ter um servidor Http. Por exemplo: [Apache](https://httpd.apache.org/).
 
 ### Executando o projeto
-#### Preparação
-##### Configuração
+#### Configuração
 Para executar o projeto, deve-se primeiro definir as configurações de acesso a API definidos no arquivo [ApiConfig.json](https://github.com/DanielHGimenez/teste-bexs/blob/master/frontend/src/main/config/ApiConfig.json). 
 
 #### Execução
