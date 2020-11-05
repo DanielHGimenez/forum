@@ -1,6 +1,6 @@
 # Forum
 
-Forum é um projeto teste para entrar no banco Bexs
+Forum é um projeto que implementa um forum basico de perguntas e respostas
 
 ## BackEnd
 ### Atenção: 
