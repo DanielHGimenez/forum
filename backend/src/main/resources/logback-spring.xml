@@ -206,6 +206,8 @@
             <appender-ref ref="ASYNC-FILE-INFO" />
             <appender-ref ref="ASYNC-FILE-WARN" />
             <appender-ref ref="ASYNC-FILE-ERROR" />
+        </root>
+        <root level="TRACE">
             <appender-ref ref="ASYNC-Console" />
         </root>
     </springProfile>
